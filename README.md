@@ -1,5 +1,8 @@
 # MarketplaceWebService
 
+[![Build Status](https://travis-ci.org/e-maido/marketplace_web_service.svg?branch=master)](https://travis-ci.org/e-maido/marketplace_web_service)
+[![Coverage Status](https://img.shields.io/coveralls/e-maido/marketplace_web_service.svg)](https://coveralls.io/r/e-maido/marketplace_web_service)
+
 TODO: Write a gem description
 
 ## Installation
