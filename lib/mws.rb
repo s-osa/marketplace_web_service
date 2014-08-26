@@ -1,5 +1,5 @@
-require "marketplace_web_service/version"
+require "mws/version"
 
-module MarketplaceWebService
+module MWS
   # Your code goes here...
 end
