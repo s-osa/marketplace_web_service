@@ -29,6 +29,6 @@ Attr1=Value1&Attr2=Value2&Attr3=Value3&Timestamp=12%3A34%3A56
   describe "initialize" do
     subject{ request_string }
     it{ is_expected.to be_a String }
-    it{ is_expected.to eq(valid_request_string) }
+    it("should be valid request string"){ is_expected.to eq(valid_request_string) }
   end
 end
