@@ -1,18 +1,16 @@
 require 'spec_helper'
 
 describe MWS::QueryString::RequestString do
-  let(:request_string){ MWS::QueryString::RequestString.new(valid_params) }
-  let(:valid_params) {
+  let(:request_string){ MWS::QueryString::RequestString.new(method, host, path, params) }
+  let(:method){ "POST" }
+  let(:host){ "mws.amazonservice.com" }
+  let(:path){ "/" }
+  let(:params) {
     {
-      method: "POST",
-      host:   "mws.amazonservice.com",
-      path:   "/",
-      params: {
-        "Timestamp" => "12:34:56",
-        "Attr2" => "Value2",
-        "Attr1" => "Value1",
-        "Attr3" => "Value3"
-      }
+      "Timestamp" => "12:34:56",
+      "Attr2" => "Value2",
+      "Attr1" => "Value1",
+      "Attr3" => "Value3"
     }
   }
 

@@ -3,14 +3,11 @@ require "mws/query_string/uri_encoder"
 module MWS
   class QueryString < ::String
     class RequestString < ::String
-      DEFAULT_METHOD = "POST"
-      DEFAULT_PATH   = "/"
-
-      def initialize(args={})
-        @method = args[:method] || DEFAULT_METHOD
-        @host   = args[:host]
-        @path   = args[:path] || DEFAULT_PATH
-        @params = args[:params]
+      def initialize(method, host, path, params)
+        @method = method
+        @host   = host
+        @path   = path
+        @params = params
 
         super(request_string)
       end
