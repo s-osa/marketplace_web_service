@@ -4,7 +4,7 @@ module MWS
       NO_ENCODE_CHARACTERS = /[A-Za-z0-9\-\_\.\~]/
 
       def encode(string)
-        string.each_char.map{|char| NO_ENCODE_CHARACTERS.match(char) ? char : escape_char(char) }.join("")
+        string.to_s.each_char.map{|char| char.match(NO_ENCODE_CHARACTERS) ? char : escape_char(char) }.join("")
       end
 
       private
