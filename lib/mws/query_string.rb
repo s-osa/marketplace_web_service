@@ -40,7 +40,7 @@ module MWS
     end
 
     def request_string
-      MWS::QueryString::RequestString.new(@method, @host, @path, @params)
+      MWS::QueryString::RequestString.new(method: @method, host: @host, path: @path, params: @params)
     end
 
     def sorted_params

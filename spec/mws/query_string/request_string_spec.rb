@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MWS::QueryString::RequestString do
-  let(:request_string){ MWS::QueryString::RequestString.new(method, host, path, params) }
+  let(:request_string){ MWS::QueryString::RequestString.new(method: method, host: host, path: path, params: params) }
   let(:method){ "POST" }
   let(:host){ "mws.amazonservice.com" }
   let(:path){ "/" }
