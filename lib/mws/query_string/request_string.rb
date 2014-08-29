@@ -4,10 +4,10 @@ module MWS
   class QueryString < ::String
     class RequestString < ::String
       def initialize(args)
-        @method = args[:method]
-        @host   = args[:host]
-        @path   = args[:path]
-        @params = args[:params]
+        @method   = args[:method]
+        @endpoint = args[:endpoint]
+        @path     = args[:path]
+        @params   = args[:params]
 
         super(request_string)
       end
@@ -26,7 +26,7 @@ module MWS
       def request_string
         [
           @method.to_s.upcase,
-          @host,
+          @endpoint,
           @path,
           encoded_params.map{|pair| pair.join("=") }.join("&")
         ].join("\n")

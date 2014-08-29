@@ -12,11 +12,11 @@ module MWS
     }
 
     def initialize(args)
-      @key    = args[:key]
-      @method = args[:method] || DEFAULT_METHOD
-      @host   = args[:host]
-      @path   = args[:path] || DEFAULT_PATH
-      @params = DEFAULT_PARAMS.merge(args[:params])
+      @key      = args[:key]
+      @method   = args[:method] || DEFAULT_METHOD
+      @endpoint = args[:endpoint]
+      @path     = args[:path] || DEFAULT_PATH
+      @params   = DEFAULT_PARAMS.merge(args[:params])
 
       @params["Timestamp"] = timestamp_string
       @params["Signature"] = signature_string # This substitution must be final substitution
@@ -40,7 +40,7 @@ module MWS
     end
 
     def request_string
-      MWS::QueryString::RequestString.new(method: @method, host: @host, path: @path, params: @params)
+      MWS::QueryString::RequestString.new(method: @method, endpoint: @endpoint, path: @path, params: @params)
     end
 
     def sorted_params
