@@ -31,6 +31,26 @@ module MWS
       sorted_params.each.map{|k, v| [k, encoder.encode(v)].join("=") }.join("&")
     end
 
+    def sorted_params
+      expanded_params.sort_by{|k, _v| k }
+    end
+
+    def expanded_params
+      params = {}
+      @params.each do |key, value|
+        if Array === value
+          value.each.with_index(1) do |v, idx|
+            element_name = key.match(/([A-Z][a-z]+)List/)[1]
+            new_key = [key, element_name, idx.to_s].join(".")
+            params[new_key] = v
+          end
+        else
+          params[key] = value
+        end
+      end
+      params
+    end
+
     def timestamp_string
       (@params["Timestamp"].is_a?(Time) ? @params["Timestamp"] : Time.now).iso8601
     end
@@ -41,10 +61,6 @@ module MWS
 
     def request_string
       MWS::QueryString::RequestString.new(method: @method, endpoint: @endpoint, path: @path, params: @params)
-    end
-
-    def sorted_params
-      @params.sort_by{|k, _v| k }
     end
   end
 end
