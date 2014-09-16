@@ -1,5 +1,6 @@
 require "base64"
 require "digest/md5"
+require "net/http"
 require "net/https"
 
 module MWS
@@ -11,7 +12,7 @@ module MWS
       @path     = args[:path]
       @endpoint = args[:endpoint]
       @headers  = args[:headers] || {}
-      @body     = args[:body]
+      @body     = args[:body] || ""
     end
 
     def execute
@@ -20,7 +21,7 @@ module MWS
 
       client.start do |https|
         case @method
-        when :post then https.post(@path, @body, headers)
+        when :post then return https.post(@path, @body, headers)
         else raise ArgumentError, "#{@method} is unknown HTTP method"
         end
       end
@@ -30,7 +31,7 @@ module MWS
 
     def headers
       {
-        "Contet-Type" => "text/xml",
+        "Content-Type" => "text/xml",
         "Content-MD5" => Base64.encode64(Digest::MD5.digest(@body)),
         "User-Agent"  => "MarketplaceWebService/#{MWS::VERSION} (Language=Ruby)",
         "Host"        => @endpoint

@@ -1,3 +1,4 @@
+require "time"
 require "mws/query_string/request_string"
 require "mws/query_string/signature"
 require "mws/query_string/uri_encoder"
@@ -52,7 +53,7 @@ module MWS
     end
 
     def timestamp_string
-      (@params["Timestamp"].is_a?(Time) ? @params["Timestamp"] : Time.now).iso8601
+      (@params["Timestamp"].is_a?(Time) ? @params["Timestamp"] : Time.now).getutc.iso8601
     end
 
     def signature_string
@@ -60,7 +61,7 @@ module MWS
     end
 
     def request_string
-      MWS::QueryString::RequestString.new(method: @method, endpoint: @endpoint, path: @path, params: @params)
+      MWS::QueryString::RequestString.new(method: @method, endpoint: @endpoint, path: @path, params: expanded_params)
     end
   end
 end
