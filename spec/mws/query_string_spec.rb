@@ -5,7 +5,7 @@ describe MWS::QueryString do
   let(:valid_args){
     {
       key: "ThisIsSigningKey",
-      endpoint: "mws.amazonservice.com",
+      endpoint: "mws.amazonservices.com",
       params: {
         "Action" => "SubmitFeed",
         "Timestamp" => Time.new(2009, 8, 20, 1, 10, 27, 607)
