@@ -3,7 +3,7 @@ require 'spec_helper'
 describe MWS::QueryString::RequestString do
   let(:request_string){ MWS::QueryString::RequestString.new(method: method, endpoint: endpoint, path: path, params: params) }
   let(:method){ "POST" }
-  let(:endpoint){ "mws.amazonservice.com" }
+  let(:endpoint){ "mws.amazonservices.com" }
   let(:path){ "/" }
   let(:params) {
     {
@@ -17,7 +17,7 @@ describe MWS::QueryString::RequestString do
   let(:valid_request_string){
     request_string = <<-REQUEST_STRING
 POST
-mws.amazonservice.com
+mws.amazonservices.com
 /
 Attr1=Value1&Attr2=Value2&Attr3=Value3&Timestamp=12%3A34%3A56
     REQUEST_STRING
