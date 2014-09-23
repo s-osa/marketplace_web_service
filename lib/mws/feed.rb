@@ -1,7 +1,7 @@
 require "mws/api"
 
 module MWS
-  module Report
+  module Feed
     DEFAULT_VERSION = "2009-01-01"
 
     module_function
