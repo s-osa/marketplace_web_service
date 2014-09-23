@@ -1,9 +1,7 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe MWS::QueryString::UriEncoder do
-  describe "#encode" do
-    let(:encoder){ MWS::QueryString::UriEncoder.new }
-
+describe MWS::QueryString::PercentEncodedString do
+  describe "initialize" do
     mappings = {
       "abcdefghijklmnopqrstuvwxyz" => "abcdefghijklmnopqrstuvwxyz",
       "ABCDEFGHIJKLMNOPQRSTUVWXYZ" => "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -18,9 +16,13 @@ describe MWS::QueryString::UriEncoder do
       "2009-08-20T01:10:27.607Z" => "2009-08-20T01%3A10%3A27.607Z"
     }
 
+    subject{ described_class.new("") }
+    it{ is_expected.to be_an_instance_of(described_class) }
+    it{ is_expected.to be_a(String) }
+
     mappings.each do |before, after|
       describe "\"#{before}\"" do
-        subject{ encoder.encode(before) }
+        subject{ described_class.new(before) }
         it{ is_expected.to eq(after) }
       end
     end

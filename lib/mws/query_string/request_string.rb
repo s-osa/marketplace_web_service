@@ -1,4 +1,4 @@
-require "mws/query_string/uri_encoder"
+require "mws/query_string/percent_encoded_string"
 
 module MWS
   class QueryString < ::String
@@ -19,8 +19,7 @@ module MWS
       end
 
       def encoded_params
-        encoder = MWS::QueryString::UriEncoder.new
-        Hash[sorted_params.map{|pair| pair.map{|elm| encoder.encode(elm.to_s) } } ]
+        Hash[sorted_params.map{|pair| pair.map{|elm| PercentEncodedString.new(elm.to_s) } } ]
       end
 
       def request_string

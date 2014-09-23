@@ -1,7 +1,7 @@
 require "time"
+require "mws/query_string/percent_encoded_string"
 require "mws/query_string/request_string"
 require "mws/query_string/signature"
-require "mws/query_string/uri_encoder"
 
 module MWS
   class QueryString < ::String
@@ -28,8 +28,7 @@ module MWS
     private
 
     def query_string
-      encoder = MWS::QueryString::UriEncoder.new
-      sorted_params.each.map{|k, v| [k, encoder.encode(v)].join("=") }.join("&")
+      sorted_params.each.map{|k, v| [k, PercentEncodedString.new(v)].join("=") }.join("&")
     end
 
     def sorted_params
