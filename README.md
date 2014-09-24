@@ -4,7 +4,17 @@
 [![Build Status](https://travis-ci.org/e-maido/marketplace_web_service.svg?branch=master)](https://travis-ci.org/e-maido/marketplace_web_service)
 [![Coverage Status](https://img.shields.io/coveralls/e-maido/marketplace_web_service.svg)](https://coveralls.io/r/e-maido/marketplace_web_service)
 
-TODO: Write a gem description
+MarketplaceWebService is a wrapper gem for Amazon Marketplace Web Service(MWS) API.
+
+## API Sections
+
+- :white_check_mark:      Feeds (2009-01-01)
+- :white_check_mark:      Reports (2009-01-01)
+- :ballot_box_with_check: Orders
+- :ballot_box_with_check: Products
+- :ballot_box_with_check: Recommendations
+- :ballot_box_with_check: Sellers
+- :ballot_box_with_check: Subscriptions
 
 ## Installation
 
